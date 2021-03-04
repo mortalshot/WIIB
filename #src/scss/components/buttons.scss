@@ -1,3 +1,40 @@
 .btn {
-    
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    @include adaptiv-value("height", 55, 37, 1);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 29px;
+    color: $DBlue;
+    text-align: center;
+    white-space: nowrap;
+    @include adaptiv-value("padding-left", 39, 26, 1);
+    @include adaptiv-value("padding-right", 39, 26, 1);
+    border: 3px solid $DBlue;
+    background-color: $White;
+    border-radius: 32px;
+
+    @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+        font-size: calc(13px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+        line-height: calc(29 / 19);
+    }
+
+    &--cyan {
+        border-color: $Cyan;
+        background-color: $Cyan;
+        font-size: 11px;
+        line-height: 17px;
+        color: $White;
+        @include adaptiv-value("padding-left", 21, 17, 1);
+        @include adaptiv-value("padding-right", 21, 17, 1);
+        @include adaptiv-value("height", 31, 25, 1);
+        border-radius: 18px;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(9px + 2 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(17 / 11);
+        }
+    }
 }

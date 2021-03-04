@@ -21,3 +21,602 @@
 
 // === Pages ===
 @import "pages/index";
+
+// ===== HEADER START =====
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		transition: 0.3s ease all 0s;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+		height: $size-header-height;
+		transition: 0.3s ease height 0s;
+
+		@media screen and (max-width: 991px) {
+			height: $size-header-height-tablet;
+		}
+		@media screen and (max-width: 767px) {
+			height: $size-header-height-mobile;
+		}
+	}
+
+	&__top {
+		position: relative;
+		z-index: 2;
+
+		@media screen and (min-width: 768px) {
+			margin-bottom: 19px;
+		}
+
+		.language {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+
+	&__bottom {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+	}
+
+	&__logo {
+		position: relative;
+		z-index: 3;
+		flex: 1 1 auto;
+
+		.logo__img {
+			flex: 0 0 208px;
+			width: 100%;
+			@include adaptiv-value("max-width", 208, 136, 1);
+			@include adaptiv-value("flex-basis", 208, 136, 1);
+
+			.cls-1 {
+				fill: $White;
+				transition: 0.3s ease all 0s;
+			}
+
+			.cls-3 {
+				fill: $Cyan4;
+			}
+		}
+
+		.logo__link {
+			@media screen and (min-width: 992px) {
+				&:hover {
+					.cls-1 {
+						fill: $Black2;
+					}
+				}
+			}
+		}
+
+		&.active {
+			.logo__img {
+				.cls-1 {
+					fill: $Black2;
+				}
+			}
+		}
+	}
+
+	&__burger {
+		@media screen and (max-width: 767px) {
+			display: inline-flex;
+			align-items: center;
+			position: relative;
+			height: 15px;
+			width: 26px;
+			font-size: 16px;
+			transition: 0.3s ease all 0s;
+			padding: 7px 0 7px;
+			color: $White;
+			z-index: 3;
+
+			&::before,
+			&::after,
+			span {
+				content: "";
+				background-color: $Black2;
+				position: absolute;
+				width: 26px;
+				height: 3px;
+				left: 0;
+				border-radius: 100px;
+				transition: 0.3s ease all 0s;
+			}
+
+			&::before {
+				top: 0;
+			}
+
+			&::after {
+				bottom: 0;
+			}
+
+			span {
+				top: 6px;
+				margin-right: 6px;
+			}
+
+			&.active {
+				&::before {
+					transform: rotate(45deg);
+					top: 6px;
+				}
+
+				&::after {
+					transform: rotate(-45deg);
+					bottom: 6px;
+				}
+
+				span {
+					transform: scale(0);
+				}
+			}
+		}
+	}
+
+	&__menu {
+		@media screen and (max-width: 767px) {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			overflow: auto;
+			background-color: $White;
+			padding: 129px 17px 25px;
+			z-index: 2;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			transform: translate(0, -100%);
+			transition: 0.3s ease all 0s;
+
+			&.active {
+				transform: translate(0);
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		position: relative;
+		z-index: 2;
+
+		@media screen and (max-width: 767px) {
+			display: block;
+		}
+	}
+
+	&__item {
+		@include adaptiv-value("margin-right", 60, 0, 1);
+
+		@media screen and (max-width: 767px) {
+			margin: 0px 0px 40px 0px;
+
+			&:last-child {
+				margin-bottom: 58px;
+			}
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__link {
+		font-size: 16px;
+		line-height: 19px;
+		color: $White;
+		white-space: nowrap;
+		transition: 0.3s ease color 0s;
+
+		@media screen and (min-width: 992px) {
+			&:hover {
+				color: $Black2;
+			}
+		}
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(14px + 2 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(19 / 16);
+		}
+		@media screen and (max-width: 767px) {
+			color: $fontColor;
+			font-size: 20px;
+			line-height: 1;
+		}
+	}
+
+	&.bg {
+		box-shadow: 0px -1px 26px -7px rgba(33, 55, 65, 0.61);
+
+		&::before {
+			background-color: #fff;
+		}
+
+		.header__body {
+			height: $size-header-height-mobile;
+
+			@media screen and (max-width: 767px) {
+				height: $size-header-height-mobile - 25px;
+			}
+		}
+
+		.header__top {
+			@media screen and (min-width: 768px) {
+				display: none;
+			}
+		}
+
+		.header__link {
+			color: $Black2;
+
+			@media screen and (min-width: 992px) {
+				&:hover {
+					color: $Black;
+				}
+			}
+		}
+
+		.logo {
+			&__link {
+				@media screen and (min-width: 992px) {
+					&:hover {
+						.cls-1 {
+							fill: $Black;
+						}
+					}
+				}
+			}
+
+			&__img {
+				.cls-1 {
+					fill: $Black2;
+				}
+			}
+		}
+	}
+}
+
+.logo {
+	display: flex;
+
+	&__link {
+		display: inline-flex;
+	}
+
+	&__img {
+		display: inline-flex;
+	}
+}
+
+.language {
+	&__current {
+		display: flex;
+		align-items: flex-end;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 17px;
+		color: $White;
+
+		@media screen and (max-width: 767px) {
+			color: $Black2;
+			font-size: 20px;
+			line-height: 24px;
+		}
+
+		img {
+			margin-right: 5px;
+
+			@media screen and (max-width: 767px) {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+}
+
+// ===== HEADER END =====
+
+// ===== MAIN START =====
+.main {
+	position: relative;
+	@include adaptiv-value("height", 660, 492, 1);
+
+	&__container {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__image {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 0;
+		@include adaptiv-value("height", 660, 492, 1);
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__content-wrapper {
+		position: relative;
+		text-align: center;
+		color: $White;
+	}
+
+	&__title {
+		@include adaptiv-value("margin-bottom", 30, 23, 1);
+	}
+
+	&__subtitle {
+		font-weight: 400;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(22px + 8 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+		}
+	}
+}
+// ===== MAIN END =====
+
+// ===== PROGRESS START =====
+.progress {
+	position: relative;
+	background: url(../img/home/progress-bg.svg) no-repeat center/cover;
+	display: flex;
+	align-items: center;
+	@include adaptiv-value("min-height", 395, 166, 1);
+
+	&__list {
+		padding: 0 90px 20px;
+		@include adaptiv-value("margin-left", -34, -0, 1);
+		@include adaptiv-value("margin-right", -34, -0, 1);
+		display: flex;
+		align-items: center;
+
+		@media screen and (max-width: 991px) {
+			padding: 0;
+		}
+		@media screen and (max-width: 575px) {
+			justify-content: space-between;
+		}
+	}
+
+	&__item {
+		text-align: center;
+		@include adaptiv-value("padding-left", 34, 0, 1);
+		@include adaptiv-value("padding-right", 34, 0, 1);
+	}
+
+	&__item-title {
+		font-weight: 700;
+		font-size: 80px;
+		line-height: 96px;
+		background: url(../img/home/text-bg.png) no-repeat center/cover;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(34px + 46 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+		}
+	}
+
+	&__item-text {
+		font-size: 12px;
+		line-height: 14px;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(10px + 2 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(14 / 12);
+		}
+	}
+
+	&__item--main {
+		.progress__item-title {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 7px;
+
+			span {
+				font-size: 180px;
+				line-height: 1;
+
+				@media screen and (max-width: 575px) {
+					font-size: calc(80px + 100 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+				}
+			}
+		}
+
+		.progress__item-text {
+			font-size: 15px;
+			line-height: 18px;
+
+			@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+				font-size: calc(12px + 3 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+				line-height: calc(19 / 15);
+			}
+		}
+	}
+
+	&__image {
+		position: absolute;
+	}
+
+	&__image-left-bottom {
+		left: 68px;
+		bottom: 44px;
+
+		@media screen and (max-width: 991px) {
+			display: none;
+		}
+	}
+
+	&__image-right-top {
+		right: 68px;
+		top: 44px;
+
+		@media screen and (max-width: 991px) {
+			display: none;
+		}
+	}
+
+	&__image--center {
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 50%);
+
+		@media screen and (max-width: 991px) {
+			bottom: auto;
+			top: 0;
+			transform: translate(-50%, -64%);
+		}
+
+		img {
+			@include adaptiv-value("width", 135, 59, 1);
+		}
+	}
+}
+// ===== PROGRESS END =====
+
+// ===== DETAILS START =====
+.details {
+	background-color: $White;
+	@include adaptiv-value("padding-top", 80, 50, 1);
+	@include adaptiv-value("padding-bottom", 80, 50, 1);
+
+	&__map-image {
+		img {
+			margin: 0 auto
+		}
+	}
+
+	&--home {
+		@include adaptiv-value("padding-top", 100, 15, 1);
+	}
+}
+
+.paragraph {
+	max-width: 550px;
+	margin: 35px 0;
+
+	@media screen and (max-width: 991px) {
+		text-align: center;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	&__title {
+		color: $DBlue;
+		margin-bottom: 12px;
+	}
+
+	&--right {
+		text-align: right;
+		margin-left: auto;
+	}
+}
+
+.attainment {
+	margin-top: 40px;
+	@include adaptiv-value("margin-bottom", 110, 65, 1);
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: -7.5px;
+		margin-bottom: -7.5px;
+		@include adaptiv-value("margin-left", -12.5, -8, 1);
+		@include adaptiv-value("margin-right", -12.5, -8, 1);
+	}
+
+	&__card {
+		display: flex;
+		flex: 0 0 25%;
+		padding: 7.5px 12.5px;
+		@include adaptiv-value("padding-left", 12.5, 8, 1);
+		@include adaptiv-value("padding-right", 12.5, 8, 1);
+
+		@media screen and (max-width: 991px) {
+			flex: 0 0 50%;
+		}
+		@media screen and (max-width: 575px) {
+			flex: 0 0 100%;
+		}
+	}
+
+	&__card-wrapper {
+		background-color: $White;
+		border-radius: 5px;
+		box-shadow: 0px 0px 22.2169px rgba(88, 88, 88, 0.25);
+		@include adaptiv-value("padding-top", 40, 30, 1);
+		@include adaptiv-value("padding-bottom", 40, 30, 1);
+		@include adaptiv-value("padding-left", 25, 20, 1);
+		@include adaptiv-value("padding-right", 25, 20, 1);
+
+		@media screen and (max-width: 991px) {
+			box-shadow: 0px 0px 17.5576px rgba(88, 88, 88, 0.25);
+			border-radius: 4px;
+		}
+	}
+
+	&__card-label {
+		font-weight: 700;
+		font-size: 23px;
+		line-height: 27px;
+		color: $Black;
+		@include adaptiv-value("margin-bottom", 15, 8, 1);
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(18px + 5 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(27 / 23);
+		}
+
+		&::first-letter {
+			color: $Cyan;
+		}
+	}
+}
+
+// ===== DETAILS END =====
+
+// ===== HEADER START =====
+
+// ===== HEADER END =====
+
+// ===== HEADER START =====
+
+// ===== HEADER END =====
+.footer {
+	background-color: $Cyan2;
+}

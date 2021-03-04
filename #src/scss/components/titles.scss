@@ -1,3 +1,98 @@
 .title {
-    
+    &-h1 {
+        font-family: $fontSecond;
+        font-weight: 700;
+        font-size: 65px;
+        line-height: 80px;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(46px + 19 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(80 / 65);
+        }
+    }
+
+    &-h2 {
+        font-family: $fontSecond;
+        font-weight: 700;
+        font-size: 45px;
+        line-height: 55px;
+        text-align: center;
+        position: relative;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(24px + 21 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(55 / 45);
+        }
+
+        span {
+            display: block;
+            font-size: 22px;
+            line-height: 27px;
+
+            @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+                font-size: calc(12px + 10 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+                line-height: calc(27 / 22);
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 90%;
+            height: 6px;
+            background: url(../img/icons/line-title-h2.svg) no-repeat center/cover;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 100%);
+        }
+    }
+
+    &-h3 {
+        font-family: $fontSecond;
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 43px;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(24px + 11 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(43 / 35);
+        }
+    }
+
+    &-h4 {
+        font-family: $fontSecond;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 37px;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(24px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(37 / 30);
+        }
+    }
+
+    &-h5 {
+        font-family: $fontSecond;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(18px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(29 / 24);
+        }
+    }
+
+    &-h6 {
+        font-family: $fontThird;
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 27px;
+
+        @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
+            font-size: calc(15px + 8 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+            line-height: calc(27 / 23);
+        }
+    }
 }
