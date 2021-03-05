@@ -21,7 +21,7 @@
         line-height: calc(29 / 19);
     }
 
-    &--cyan {
+    &-cyan {
         border-color: $Cyan;
         background-color: $Cyan;
         font-size: 11px;
@@ -29,12 +29,11 @@
         color: $White;
         @include adaptiv-value("padding-left", 21, 17, 1);
         @include adaptiv-value("padding-right", 21, 17, 1);
-        @include adaptiv-value("height", 31, 25, 1);
+        @include adaptiv-value("height", 31, 29, 1);
         border-radius: 18px;
 
         @media screen and (max-width: $layoutDesktop - 0.02 + 'px') {
-            font-size: calc(9px + 2 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
-            line-height: calc(17 / 11);
+            font-size: 11px;
         }
     }
 }

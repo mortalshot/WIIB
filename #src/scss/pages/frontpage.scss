@@ -1,0 +1,319 @@
+// ===== MAIN START =====
+.main {
+	position: relative;
+	@include adaptiv-value("height", 660, 492, 1);
+
+	&__container {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__image {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 0;
+		@include adaptiv-value("height", 660, 492, 1);
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__content-wrapper {
+		position: relative;
+		text-align: center;
+		color: $White;
+	}
+
+	&__title {
+		@include adaptiv-value("margin-bottom", 30, 23, 1);
+	}
+
+	&__subtitle {
+		font-weight: 400;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(22px + 8 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+		}
+	}
+
+	&--justify-end {
+		.main__container {
+			justify-content: flex-end;
+		}
+	}
+
+	&--image-full {
+		@media screen and (max-width: 850px) {
+			.main {
+				&__container {
+					padding: 0;
+					flex-direction: column;
+				}
+
+				&__image {
+					position: relative;
+					left: auto;
+					top: auto;
+				}
+
+				&__content-wrapper {
+					padding: 0 15px;
+					@include adaptiv-value("padding-top", 64, 32, 0);
+					@include adaptiv-value("padding-bottom", 64, 32, 0);
+					text-align: center;
+					background: url(../img/home/progress-bg.svg) no-repeat center/cover;
+					max-width: 100%;
+				}
+
+				&__title {
+					color: $DBlue;
+					font-size: calc(24px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+					line-height: calc(37 / 30);
+				}
+			
+				&__subtitle {
+					color: $fontColor;
+					font-size: calc(18px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+					line-height: calc(29 / 24);
+				}
+			}
+		}
+	}
+
+	&--works {
+		.main__content-wrapper {
+			max-width: 540px;
+			text-align: left;
+		}
+	}
+}
+// ===== MAIN END =====
+
+// ===== PROGRESS START =====
+.progress {
+	position: relative;
+	background: url(../img/home/progress-bg.svg) no-repeat center/cover;
+	display: flex;
+	align-items: center;
+	@include adaptiv-value("min-height", 395, 166, 1);
+
+	&__list {
+		padding: 0 90px 20px;
+		@include adaptiv-value("margin-left", -34, -0, 1);
+		@include adaptiv-value("margin-right", -34, -0, 1);
+		display: flex;
+		align-items: center;
+
+		@media screen and (max-width: 991px) {
+			padding: 0;
+		}
+		@media screen and (max-width: 575px) {
+			justify-content: space-between;
+		}
+	}
+
+	&__item {
+		text-align: center;
+		@include adaptiv-value("padding-left", 34, 0, 1);
+		@include adaptiv-value("padding-right", 34, 0, 1);
+	}
+
+	&__item-title {
+		font-weight: 700;
+		font-size: 80px;
+		line-height: 96px;
+		background: url(../img/home/text-bg.png) no-repeat center/cover;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(34px + 46 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+		}
+	}
+
+	&__item-text {
+		font-size: 12px;
+		line-height: 14px;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(10px + 2 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(14 / 12);
+		}
+	}
+
+	&__item--main {
+		.progress__item-title {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 7px;
+
+			span {
+				font-size: 180px;
+				line-height: 1;
+
+				@media screen and (max-width: 575px) {
+					font-size: calc(80px + 100 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+				}
+			}
+		}
+
+		.progress__item-text {
+			font-size: 15px;
+			line-height: 18px;
+
+			@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+				font-size: calc(12px + 3 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+				line-height: calc(19 / 15);
+			}
+		}
+	}
+
+	&__image {
+		position: absolute;
+	}
+
+	&__image-left-bottom {
+		left: 68px;
+		bottom: 44px;
+
+		@media screen and (max-width: 991px) {
+			display: none;
+		}
+	}
+
+	&__image-right-top {
+		right: 68px;
+		top: 44px;
+
+		@media screen and (max-width: 991px) {
+			display: none;
+		}
+	}
+
+	&__image--center {
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 50%);
+
+		@media screen and (max-width: 991px) {
+			bottom: auto;
+			top: 0;
+			transform: translate(-50%, -64%);
+		}
+
+		img {
+			@include adaptiv-value("width", 135, 59, 1);
+		}
+	}
+}
+// ===== PROGRESS END =====
+
+// ===== DETAILS START =====
+.details {
+	background-color: $White;
+	@include adaptiv-value("padding-top", 80, 50, 1);
+	@include adaptiv-value("padding-bottom", 80, 50, 1);
+
+	&__map-image {
+		img {
+			margin: 0 auto;
+		}
+	}
+
+	&--home {
+		@include adaptiv-value("padding-top", 100, 15, 1);
+	}
+}
+
+.paragraph {
+	max-width: 550px;
+	margin: 35px 0;
+
+	@media screen and (max-width: 991px) {
+		text-align: center;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	&__title {
+		color: $DBlue;
+		margin-bottom: 12px;
+	}
+
+	&--right {
+		text-align: right;
+		margin-left: auto;
+	}
+}
+
+.attainment {
+	margin-top: 40px;
+	@include adaptiv-value("margin-bottom", 110, 65, 1);
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: -7.5px;
+		margin-bottom: -7.5px;
+		@include adaptiv-value("margin-left", -12.5, -8, 1);
+		@include adaptiv-value("margin-right", -12.5, -8, 1);
+	}
+
+	&__card {
+		display: flex;
+		flex: 0 0 25%;
+		padding: 7.5px 12.5px;
+		@include adaptiv-value("padding-left", 12.5, 8, 1);
+		@include adaptiv-value("padding-right", 12.5, 8, 1);
+
+		@media screen and (max-width: 991px) {
+			flex: 0 0 50%;
+		}
+		@media screen and (max-width: 575px) {
+			flex: 0 0 100%;
+		}
+	}
+
+	&__card-wrapper {
+		background-color: $White;
+		border-radius: 5px;
+		box-shadow: 0px 0px 22.2169px rgba(88, 88, 88, 0.25);
+		@include adaptiv-value("padding-top", 40, 30, 1);
+		@include adaptiv-value("padding-bottom", 40, 30, 1);
+		@include adaptiv-value("padding-left", 25, 20, 1);
+		@include adaptiv-value("padding-right", 25, 20, 1);
+
+		@media screen and (max-width: 991px) {
+			box-shadow: 0px 0px 17.5576px rgba(88, 88, 88, 0.25);
+			border-radius: 4px;
+		}
+	}
+
+	&__card-label {
+		font-weight: 700;
+		font-size: 23px;
+		line-height: 27px;
+		color: $Black;
+		@include adaptiv-value("margin-bottom", 15, 8, 1);
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(18px + 5 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(27 / 23);
+		}
+
+		&::first-letter {
+			color: $Cyan;
+		}
+	}
+}
+// ===== DETAILS END =====

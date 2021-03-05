@@ -1,0 +1,127 @@
+// ===== FOOTER START =====
+.footer {
+	background-color: $Cyan2;
+	@include adaptiv-value("padding-top", 74, 37, 1);
+	@include adaptiv-value("padding-bottom", 74, 37, 1);
+
+	&__top {
+		display: flex;
+		justify-content: space-between;
+		@include adaptiv-value("margin-bottom", 40, 20, 1);
+
+		@media screen and (max-width: 850px) {
+			flex-direction: column-reverse;
+		}
+	}
+
+	&__links {
+		flex: 1 1 auto;
+		@include adaptiv-value("margin-left", -27.5, -4, 1);
+		@include adaptiv-value("margin-right", -27.5, -4, 1);
+		display: flex;
+		padding-right: 15px;
+
+		@media screen and (max-width: 850px) {
+			padding-right: 0;
+		}
+	}
+
+	&__column {
+		@include adaptiv-value("padding-left", 27.5, 4, 1);
+		@include adaptiv-value("padding-right", 27.5, 4, 1);
+	}
+
+	&__links-label {
+		color: $DBlue;
+		@include adaptiv-value("margin-bottom", 23, 10, 1);
+	}
+
+	&__item {
+		@include adaptiv-value("margin-bottom", 10, 8, 1);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__link {
+		color: $fontColor;
+		transition: 0.3s ease color 0s;
+	}
+
+	&__subscribe {
+		max-width: 420px;
+		flex: 0 0 34%;
+
+		@media screen and (max-width: 850px) {
+			max-width: 100%;
+			margin-bottom: 40px;
+		}
+		@media screen and (max-width: 575px) {
+			text-align: center;
+		}
+
+		.subscribe__form {
+			@media screen and (max-width: 575px) {
+				justify-content: center;
+			}
+		}
+	}
+
+	&__privacy {
+		color: $Black;
+
+		@media screen and (max-width: 575px) {
+			text-align: center;
+		}
+	}
+}
+
+.subscribe {
+	&__title {
+		font-family: $fontMain;
+		color: $DBlue;
+		@include adaptiv-value("margin-bottom", 23, 6, 1);
+	}
+
+	&__text {
+		@include adaptiv-value("margin-bottom", 30, 40, 1);
+		line-height: 35px;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			line-height: calc(35 / 20);
+		}
+	}
+
+	&__form {
+		display: flex;
+		align-items: flex-end;
+	}
+
+	&__input {
+		background-color: transparent;
+		border-bottom: 1px solid $fontColor;
+		font-size: #{$fontSize}px;
+		line-height: #{$lineHeight}px;
+		color: $fontColor;
+		margin-right: 9px;
+		padding: 2px 0;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(#{$fontSizeMobile}px + (#{$fontSize} - #{$fontSizeMobile}) * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(#{$lineHeight} / #{$fontSize});
+		}
+
+		&::placeholder {
+			opacity: 1;
+			transition: 0.3s ease opacity 0s;
+		}
+
+		&:focus {
+			&::placeholder {
+				opacity: 0;
+			}
+		}
+	}
+}
+// ===== FOOTER END =====
