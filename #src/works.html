@@ -161,70 +161,7 @@
             </div>
         </section>
 
-        <section class="sign">
-            <div class="sign__container container">
-                <h2 class="sign__title title-h2">
-                    <div class="title-h2__wrapper">
-                        <span>A new chapter in your business</span>
-                        Sign up for early bird profits!
-                    </div>
-                </h2>
-                <form action="" class="sign__form form">
-                    <div class="sign__form-row">
-                        <div class="sign__form-left">
-                            <div class="form__row">
-                                <div class="form__item">
-                                    <label for="" class="form__label">Name</label>
-                                    <input type="text" class="form__input">
-                                </div>
-                            </div>
-                            <div class="form__row">
-                                <div class="form__item">
-                                    <label for="" class="form__label">Email</label>
-                                    <input type="email" class="form__input">
-                                </div>
-                            </div>
-                            <div class="form__row">
-                                <div class="form__item">
-                                    <label for="" class="form__label">...provide services</label>
-                                    <input type="text" class="form__input">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sign__form-right">
-                            <div class="form__row">
-                                <div class="form__item">
-                                    <textarea type="text" class="form__input" placeholder="Tell us a bit about yourself and your business!"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <div class="form__item form__item--checkbox">
-                            <div class="checkbox">
-                                <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input _req">
-                                <label for="formAgreement" class="checkbox__label"><span>I accept the terms & conditions and I understand that my data will be securely hold in accordance with the <a href="">privacy policy.</a></span></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <div class="form__item form__item--checkbox">
-                            <div class="checkbox">
-                                <input id="formMailing" checked type="checkbox" name="mailing" class="checkbox__input">
-                                <label for="formMailing" class="checkbox__label"><span>I would like to recieve Updates and News from BIIG Wheel. </span></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form__row">
-                        <div class="form__item">
-                            <div class="sign__submit">
-                                <button class="btn">Send</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
+        @@include('html-components/sign.html')
 	</main>
 
     @@include('html-components/_footer.html', {

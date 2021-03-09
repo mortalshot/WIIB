@@ -4835,4 +4835,12 @@ $(document).ready(function () {
       $('.header').removeClass('bg');
     }
   });
+  var button = document.querySelector('#offersWorldwide');
+  var tooltip = document.querySelector('#offersWorldwideContent');
+  var popperInstance = Popper.createPopper(button, tooltip, {
+    placement: 'bottom'
+  });
+  $('.popper__btn').click(function (e) {
+    $(this).closest('.popper').toggleClass('active');
+  });
 });

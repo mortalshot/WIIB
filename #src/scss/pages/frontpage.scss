@@ -45,6 +45,38 @@
 		}
 	}
 
+	&__text {
+		@include adaptiv-value("margin-top", 20, 15, 1);
+		@include adaptiv-value("margin-bottom", 20, 15, 1);
+	}
+
+	&__people {
+		display: flex;
+		@include adaptiv-value("margin-top", 40, 20, 1);
+	}
+
+	&__person {
+		@include adaptiv-value("margin-right", 40, 8, 1);
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__person-label {
+		font-weight: 700;
+	}
+
+	&__person-position {
+		font-size: 18px;
+		line-height: 26px;
+
+		@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+			font-size: calc(15px + 3 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+			line-height: calc(26 / 18);
+		}
+	}
+
 	&--justify-end {
 		.main__container {
 			justify-content: flex-end;
@@ -53,6 +85,8 @@
 
 	&--image-full {
 		@media screen and (max-width: 850px) {
+			height: initial;
+
 			.main {
 				&__container {
 					padding: 0;
@@ -63,6 +97,11 @@
 					position: relative;
 					left: auto;
 					top: auto;
+					@include adaptiv-value("height", 660, 270, 1);
+
+					img {
+						object-position: left;
+					}
 				}
 
 				&__content-wrapper {
@@ -71,6 +110,7 @@
 					@include adaptiv-value("padding-bottom", 64, 32, 0);
 					text-align: center;
 					background: url(../img/home/progress-bg.svg) no-repeat center/cover;
+					width: 100%;
 					max-width: 100%;
 				}
 
@@ -79,7 +119,7 @@
 					font-size: calc(24px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
 					line-height: calc(37 / 30);
 				}
-			
+
 				&__subtitle {
 					color: $fontColor;
 					font-size: calc(18px + 6 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
@@ -93,6 +133,55 @@
 		.main__content-wrapper {
 			max-width: 540px;
 			text-align: left;
+		}
+	}
+
+	&--about {
+		.main__container {
+			@media screen and (min-width: 851px) {
+				align-items: flex-end;
+			}
+		}
+
+		.main__content-wrapper {
+			max-width: 453px;
+			text-align: left;
+
+			@media screen and (min-width: 851px) {
+				@include adaptiv-value("margin-bottom", 120, 0, 1);
+			}
+			@media screen and (max-width: 850px) {
+				color: $fontColor;
+			}
+		}
+
+		.main__title {
+			font-size: 35px;
+			line-height: 43px;
+
+			@media screen and (max-width: $layoutDesktop - 0.02 + "px") {
+				font-size: calc(24px + 11 * ((100vw - #{$layoutMobile}px) / (#{$layoutDesktop} - #{$layoutMobile})));
+				line-height: calc(43 / 35);
+			}
+		}
+
+		.main__people {
+			@media screen and (max-width: 850px) {
+				justify-content: center;
+			}
+			@media screen and (max-width: 450px) {
+				flex-direction: column;
+			}
+		}
+
+		.main__person {
+			@media screen and (max-width: 450px) {
+				margin: 0px 0px 15px 0px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 }
@@ -222,7 +311,7 @@
 .details {
 	background-color: $White;
 	@include adaptiv-value("padding-top", 80, 50, 1);
-	@include adaptiv-value("padding-bottom", 80, 50, 1);
+	@include adaptiv-value("margin-bottom", 80, 50, 1);
 
 	&__map-image {
 		img {
@@ -230,8 +319,88 @@
 		}
 	}
 
+	&__popper {
+		display: flex;
+		justify-content: flex-end;
+
+		.popper__btn {
+			@include adaptiv-value("padding-top", 20, 10, 1);
+			@include adaptiv-value("padding-bottom", 20, 10, 1);
+			@include adaptiv-value("padding-left", 25, 15, 1);
+			@include adaptiv-value("padding-right", 25, 15, 1);
+		}
+
+		.popper__content {
+			table {
+				tr {
+					&:first-child {
+						font-weight: 700;
+						color: $DBlue;
+					}
+				}
+
+				td {
+					&:first-child {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
 	&--home {
 		@include adaptiv-value("padding-top", 100, 15, 1);
+	}
+}
+
+.popper {
+	display: inline-block;
+	position: relative;
+
+	&__btn {
+		cursor: pointer;
+		display: inline-block;
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		&::after {
+			content: "";
+			display: block;
+			flex: 0 0 21px;
+			@include adaptiv-value("flex-basis", 21, 10, 1);
+			@include adaptiv-value("width", 21, 10, 1);
+			@include adaptiv-value("height", 13, 6, 1);
+			margin-left: 10px;
+			background: url(../img/icons/popper.svg) no-repeat center/contain;
+			transition: 0.3s ease transform 0s;
+		}
+	}
+
+	&__content {
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: 0px 0px 5px rgba(88, 88, 88, 0.25);
+		background-color: $White;
+		padding: 20px 25px;
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+		transition: 0.3s ease opacity 0s;
+	}
+
+	&.active {
+		.popper__btn {
+			&::after {
+				transform: rotate(180deg);
+			}
+		}
+
+		.popper__content {
+			opacity: 1;
+			pointer-events: auto;
+			visibility: visible;
+		}
 	}
 }
 
@@ -253,6 +422,12 @@
 	&--right {
 		text-align: right;
 		margin-left: auto;
+	}
+
+	&--center {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
@@ -316,4 +491,5 @@
 		}
 	}
 }
+
 // ===== DETAILS END =====
